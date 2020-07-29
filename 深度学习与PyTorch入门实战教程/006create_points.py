@@ -6,11 +6,20 @@ from matplotlib import pyplot as plt
 w = 1.347
 b = 0.627
 
-#pArray = np.array(np.zeros((100, 2), dtype=float))
-#print(pArray)
-x = np.random.randint(30, 80, [100, 1])
-print(x)
-noize = np.random.randint(-5, 5, [100, 1])
+x = np.random.randn(300, 1) * 10
+#print(x)
+noize = np.random.randn(300, 1) * 7
 
 y = w * x + b + noize
-print(y)
+#print(y)
+
+plt.title('sample points')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.plot(x, y, 'ob')
+plt.show()
+
+pArray = np.hstack((x, y))
+#print(pArray)
+
+np.savetxt('points.csv', pArray, delimiter=',')
